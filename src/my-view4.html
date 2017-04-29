@@ -1,0 +1,45 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+
+
+<dom-module id="my-view4">
+  <template>
+
+  <iron-ajax
+    auto
+    url="http://jsonplaceholder.typicode.com/posts/"
+    last-response="{{posts}}"
+    handle-as="json"></iron-ajax>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+   
+    <template is="dom-repeat" items="{{posts}}">
+    <div div class="card">
+        <div> <span class="circle">{{item.id}}</span></div>
+        <div>Title:<span >{{item.title}}</span></div>
+        <div>Body: <span>{{item.body}}</span></div>
+        <br>
+        </div>
+    </template>
+
+    
+  </template>
+  <script>
+    class MyView4 extends Polymer.Element {
+      static get is() { return 'my-view4'; }
+    }
+    Polymer({
+            is: "ajax-element"
+        });
+  
+    window.customElements.define(MyView4.is, MyView4);
+  </script>
+
+</dom-module>
